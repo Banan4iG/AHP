@@ -12,29 +12,28 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AHP
 {
-
 	public partial class Form1 : Form
 	{
-		List<Alternative> ListAlternative;
-		class Alternative
+		public List<Alternative> ListAlternative;
+		public class Alternative
 		{
-			public Alternative(string name, int closeTown, int ecology, int road, int infr, int cost)
+			public string Name { get; set; }
+			public int CloseTown { get; set; }
+			public int Ecology { get; set; }
+			public int Road { get; set; }
+			public int Infr { get; set; }
+			public int Cost { get; set; }
+			public Alternative(string name, int closetown, int ecology, int road, int infr, int cost)
 			{
 				Name = name;
-				CloseTown = closeTown;
+				CloseTown = closetown;
 				Ecology = ecology;
 				Road = road;
 				Infr = infr;
 				Cost = cost;
 			}
-			string Name { get; set; }
-			int CloseTown { get; set; }
-			int Ecology { get; set; }
-			int Road { get; set; }
-			int Infr { get; set; }
-			int Cost { get; set; }
-		}
 
+		}
 		double[,] a = new double[5, 5];
 
 		double[,] closeTown = new double[,]
@@ -89,13 +88,23 @@ namespace AHP
 		{
 			InitializeComponent();
 			ListAlternative = new List<Alternative> {
-				new Alternative("Тургенево", 1, 1, 1, 1, 1),
-				new Alternative("Карачарово", 1, 1, 1, 1, 1),
-				new Alternative("Панфилово", 1, 1, 1, 1, 1),
-				new Alternative("Ковардицы", 1, 1, 1, 1, 1),
-				new Alternative("Чаадаево", 1, 1, 1, 1, 1) };
-			
+				new Alternative("Тургенево", 1, 3, 5, 7, 9),
+				new Alternative("Карачарово", 7, 5, 3, 9, 1),
+				new Alternative("Панфилово", 1, 3, 3, 1, 5),
+				new Alternative("Ковардицы", 3, 5, 9, 1, 7),
+				new Alternative("Чаадаево", 9, 1, 5, 7, 3) };
+			viewAll();
 		}
+
+		private void viewAll()
+		{
+			listView1.Items.Clear();
+			foreach (var r in ListAlternative)
+			{
+				listView1.Items.Add(r.Name);
+			}
+		}
+
 
 		private void button1_Click(object sender, EventArgs e)
 		{
@@ -306,6 +315,80 @@ namespace AHP
 				case 2: label10.Text = "Средней важности"; break;
 				case 3: label10.Text = "Важно"; break;
 				case 4: label10.Text = "Наиболее важно"; break;
+			}
+		}
+
+		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (listView1.SelectedItems.Count > 0)
+			{
+				foreach(var r in ListAlternative)
+				{
+					if (r.Name == listView1.SelectedItems[0].Text)
+					{
+						/*
+						public int CloseTown { get; set; }
+						public int Ecology { get; set; }
+						public int Road { get; set; }
+						public int Infr { get; set; }
+						public int Cost { get; set; }
+						*/
+						for(int i = 0; i<5; i++)
+						{
+							if (value[i] == r.CloseTown)
+								trackBar5.Value = i;
+							if (value[i] == r.Ecology)
+								trackBar6.Value = i;
+							if (value[i] == r.Road)
+								trackBar7.Value = i;
+							if (value[i] == r.Infr)
+								trackBar8.Value = i;
+							if (value[i] == r.Cost)
+								trackBar9.Value = i;
+						}
+					}
+				}
+			}
+			else
+			{
+				return;
+			}
+
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			ListAlternative.Add(new Alternative(textBox1.Text, value[trackBar5.Value], value[trackBar6.Value], value[trackBar7.Value], value[trackBar8.Value], value[trackBar9.Value]));
+			textBox1.Text = "";
+			viewAll();
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			if (listView1.SelectedItems.Count > 0)
+			{
+				foreach (var r in ListAlternative)
+				{
+					if (r.Name == listView1.SelectedItems[0].Text)
+					{
+						/*
+						public int CloseTown { get; set; }
+						public int Ecology { get; set; }
+						public int Road { get; set; }
+						public int Infr { get; set; }
+						public int Cost { get; set; }
+						*/
+						r.CloseTown = value[trackBar5.Value];
+						r.Ecology = value[trackBar6.Value];
+						r.Road = value[trackBar7.Value];
+						r.Infr = value[trackBar8.Value];
+						r.Cost = value[trackBar9.Value];
+					}
+				}
+			}
+			else
+			{
+				return;
 			}
 		}
 	}

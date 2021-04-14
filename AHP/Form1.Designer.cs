@@ -28,12 +28,12 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.button1 = new System.Windows.Forms.Button();
 			this.trackBar0 = new System.Windows.Forms.TrackBar();
 			this.trackBar1 = new System.Windows.Forms.TrackBar();
@@ -56,9 +56,8 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.listView1 = new System.Windows.Forms.ListView();
-			this.button2 = new System.Windows.Forms.Button();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.label16 = new System.Windows.Forms.Label();
+			this.button3 = new System.Windows.Forms.Button();
 			this.trackBar5 = new System.Windows.Forms.TrackBar();
 			this.trackBar6 = new System.Windows.Forms.TrackBar();
 			this.trackBar7 = new System.Windows.Forms.TrackBar();
@@ -69,8 +68,10 @@
 			this.label13 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
-			this.button3 = new System.Windows.Forms.Button();
-			this.label16 = new System.Windows.Forms.Label();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.button2 = new System.Windows.Forms.Button();
+			this.listView1 = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			((System.ComponentModel.ISupportInitialize)(this.trackBar0)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
@@ -218,33 +219,33 @@
 			// 
 			// chart1
 			// 
-			chartArea7.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea7);
-			legend7.Name = "Legend1";
-			this.chart1.Legends.Add(legend7);
+			chartArea3.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea3);
+			legend3.Name = "Legend1";
+			this.chart1.Legends.Add(legend3);
 			this.chart1.Location = new System.Drawing.Point(223, 201);
 			this.chart1.Name = "chart1";
-			series7.ChartArea = "ChartArea1";
-			series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-			series7.Legend = "Legend1";
-			series7.Name = "Series1";
-			this.chart1.Series.Add(series7);
+			series3.ChartArea = "ChartArea1";
+			series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+			series3.Legend = "Legend1";
+			series3.Name = "Series1";
+			this.chart1.Series.Add(series3);
 			this.chart1.Size = new System.Drawing.Size(227, 232);
 			this.chart1.TabIndex = 4;
 			this.chart1.Text = "chart1";
 			// 
 			// chart2
 			// 
-			chartArea8.Name = "ChartArea1";
-			this.chart2.ChartAreas.Add(chartArea8);
-			legend8.Name = "Legend1";
-			this.chart2.Legends.Add(legend8);
+			chartArea4.Name = "ChartArea1";
+			this.chart2.ChartAreas.Add(chartArea4);
+			legend4.Name = "Legend1";
+			this.chart2.Legends.Add(legend4);
 			this.chart2.Location = new System.Drawing.Point(529, 177);
 			this.chart2.Name = "chart2";
-			series8.ChartArea = "ChartArea1";
-			series8.Legend = "Legend1";
-			series8.Name = "Series1";
-			this.chart2.Series.Add(series8);
+			series4.ChartArea = "ChartArea1";
+			series4.Legend = "Legend1";
+			series4.Name = "Series1";
+			this.chart2.Series.Add(series4);
 			this.chart2.Size = new System.Drawing.Size(247, 234);
 			this.chart2.TabIndex = 4;
 			this.chart2.Text = "chart1";
@@ -358,31 +359,25 @@
 			this.tabPage2.Text = "Изменение альтернатив";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
-			// listView1
+			// label16
 			// 
-			this.listView1.HideSelection = false;
-			this.listView1.Location = new System.Drawing.Point(22, 32);
-			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(435, 215);
-			this.listView1.TabIndex = 0;
-			this.listView1.UseCompatibleStateImageBehavior = false;
-			this.listView1.View = System.Windows.Forms.View.List;
+			this.label16.AutoSize = true;
+			this.label16.ForeColor = System.Drawing.Color.Red;
+			this.label16.Location = new System.Drawing.Point(489, 127);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(231, 13);
+			this.label16.TabIndex = 14;
+			this.label16.Text = "Необходимо настроить значения критериев";
 			// 
-			// button2
+			// button3
 			// 
-			this.button2.Location = new System.Drawing.Point(489, 153);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 1;
-			this.button2.Text = "Добавить";
-			this.button2.UseVisualStyleBackColor = true;
-			// 
-			// textBox1
-			// 
-			this.textBox1.Location = new System.Drawing.Point(489, 85);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(198, 20);
-			this.textBox1.TabIndex = 2;
+			this.button3.Location = new System.Drawing.Point(489, 350);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(75, 23);
+			this.button3.TabIndex = 13;
+			this.button3.Text = "Изменить";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
 			// trackBar5
 			// 
@@ -489,24 +484,46 @@
 			this.label15.TabIndex = 12;
 			this.label15.Text = "Экология\r\nместности";
 			// 
-			// button3
+			// textBox1
 			// 
-			this.button3.Location = new System.Drawing.Point(489, 350);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 23);
-			this.button3.TabIndex = 13;
-			this.button3.Text = "Изменить";
-			this.button3.UseVisualStyleBackColor = true;
+			this.textBox1.Location = new System.Drawing.Point(489, 85);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(198, 20);
+			this.textBox1.TabIndex = 2;
 			// 
-			// label16
+			// button2
 			// 
-			this.label16.AutoSize = true;
-			this.label16.ForeColor = System.Drawing.Color.Red;
-			this.label16.Location = new System.Drawing.Point(489, 127);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(231, 13);
-			this.label16.TabIndex = 14;
-			this.label16.Text = "Необходимо настроить значения критериев";
+			this.button2.Location = new System.Drawing.Point(489, 153);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.TabIndex = 1;
+			this.button2.Text = "Добавить";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
+			// 
+			// listView1
+			// 
+			this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+			this.listView1.FullRowSelect = true;
+			this.listView1.GridLines = true;
+			this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.listView1.HideSelection = false;
+			this.listView1.Location = new System.Drawing.Point(22, 32);
+			this.listView1.Name = "listView1";
+			this.listView1.Size = new System.Drawing.Size(437, 215);
+			this.listView1.TabIndex = 0;
+			this.listView1.UseCompatibleStateImageBehavior = false;
+			this.listView1.View = System.Windows.Forms.View.Details;
+			this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "Альтернатива";
+			this.columnHeader1.Width = 430;
 			// 
 			// Form1
 			// 
@@ -577,6 +594,7 @@
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
 	}
 }
 
