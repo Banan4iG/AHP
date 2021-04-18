@@ -36,50 +36,15 @@ namespace AHP
 		}
 		double[,] a = new double[5, 5];
 
-		double[,] closeTown = new double[,]
-		{
-			{1, 0.11, 0.125, 0.2, 0.5 },
-			{9, 1, 2, 5, 6 },
-			{8, 0.5, 1, 4, 3 },
-			{5, 0.2, 0.25, 1, 2 },
-			{2, 0.16, 0.33, 0.5, 1 }
-		};
+		double[,] closeTown;
 
-		double[,] ecology = new double[,]
-		{
-			{1, 3, 2, 1, 0.25 },
-			{0.33, 1, 0.5, 0.25, 0.33 },
-			{0.5, 2, 1, 0.5, 0.5 },
-			{1, 4, 2, 1, 1 },
-			{4, 3, 2, 1, 1 }
-		};
+		double[,] ecology;
 
-		double[,] road = new double[,]
-		{
-			{1, 0.2, 0.16, 0.33, 1 },
-			{5, 1, 2, 0.5, 3 },
-			{6, 0.5, 1, 4, 4 },
-			{3, 2, 0.25, 1, 1 },
-			{1, 0.33, 0.25, 1, 1 }
-		};
+		double[,] road;
 
-		double[,] infr = new double[,]
-		{
-			{1, 0.33, 0.25, 0.33, 1 },
-			{3, 1, 0.5, 1, 2 },
-			{4, 2, 1, 0.5, 3 },
-			{3, 1, 2, 1, 4 },
-			{1, 0.5, 0.33, 0.25, 1 }
-		};
+		double[,] infr;
 
-		double[,] cost = new double[,]
-		{
-			{1, 3, 5, 2, 1 },
-			{0.33, 1, 2, 0.5, 1 },
-			{0.2, 0.5, 1, 0.2, 0.16 },
-			{0.5, 2, 5, 1, 0.5 },
-			{1, 1, 6, 2, 1 }
-		};
+		double[,] cost;
 
 		int[] value = new int[] 
 		{ 1, 3, 5, 7, 9 };
@@ -109,49 +74,164 @@ namespace AHP
 		private void button1_Click(object sender, EventArgs e)
 		{
 			MatrixA(a);
-			//for (int i = 0; i < 5; i++)
-			//{
-			//	for (int j = 0; j < 5; j++)
-			//	{
-			//		textBox1.Text += a[i, j].ToString("0.00") + '\t';
-			//	}
-			//	textBox1.Text += Environment.NewLine;
-			//	textBox1.Text += Environment.NewLine;
-			//}
+			int len = ListAlternative.Count;
+
+			closeTown = new double[len, len];
+			ecology = new double[len, len];
+			road = new double[len, len];
+			infr = new double[len, len];
+			cost = new double[len, len];
 
 			double[] weight = new double[5];
-			double[] result = new double[5];
-			double[] weightCloseTown = new double[5];
-			double[] weightEcology = new double[5];
-			double[] weightRoad = new double[5];
-			double[] weightInfr = new double[5];
-			double[] weightCost = new double[5];
+			double[] result = new double[len];
+			double[] weightCloseTown = new double[len];
+			double[] weightEcology = new double[len];
+			double[] weightRoad = new double[len];
+			double[] weightInfr = new double[len];
+			double[] weightCost = new double[len];
 			weight = Weight(a);
+
+			for (int i = 0; i < len; i++)
+				for (int j = 0; j < len; j++)
+					if (i == j)
+					{
+						closeTown[i, j] = 1;
+						ecology[i, j] = 1;
+						road[i, j] = 1;
+						infr[i, j] = 1;
+						cost[i, j] = 1;
+					}
+
+			int icr = 0;
+			foreach (var el1 in ListAlternative)
+			{
+				int jec = 0;
+				foreach (var el2 in ListAlternative)
+				{
+					if (ListAlternative.IndexOf(el2) < icr + 1)
+					{
+						jec++;
+						continue;
+					}
+
+					//формирование матрицы близость к городу
+					if ( el1.CloseTown > el2.CloseTown )
+					{
+						closeTown[icr, jec] = el1.CloseTown - el2.CloseTown;
+						closeTown[jec, icr] = 1/(Convert.ToDouble(el1.CloseTown) - Convert.ToDouble(el2.CloseTown));
+					}
+					else if (el1.CloseTown < el2.CloseTown)
+					{
+						closeTown[icr, jec] = 1 / (Convert.ToDouble(el2.CloseTown) - Convert.ToDouble(el1.CloseTown));
+						closeTown[jec, icr] = el2.CloseTown - el1.CloseTown;
+					}
+					else
+					{
+						closeTown[icr, jec] = 1;
+						closeTown[jec, icr] = 1;
+					}
+
+					//формирование матрицы экология
+					if (el1.Ecology > el2.Ecology)
+					{
+						ecology[icr, jec] = el1.Ecology - el2.Ecology;
+						ecology[jec, icr] = 1 / (Convert.ToDouble(el1.Ecology) - Convert.ToDouble(el2.Ecology));
+					}
+					else if (el1.Ecology < el2.Ecology)
+					{
+						ecology[icr, jec] = 1 / (Convert.ToDouble(el2.Ecology) - Convert.ToDouble(el1.Ecology));
+						ecology[jec, icr] = el2.Ecology - el1.Ecology;
+					}
+					else
+					{
+						ecology[icr, jec] = 1;
+						ecology[jec, icr] = 1;
+					}
+
+					//формирование матрицы состояние дорог
+					if (el1.Road > el2.Road)
+					{
+						road[icr, jec] = el1.Road - el2.Road;
+						road[jec, icr] = 1 / (Convert.ToDouble(el1.Road) - Convert.ToDouble(el2.Road));
+					}
+					else if (el1.Road < el2.Road)
+					{
+						road[icr, jec] = 1 / (Convert.ToDouble(el2.Road) - Convert.ToDouble(el1.Road));
+						road[jec, icr] = el2.Road - el1.Road;
+					}
+					else
+					{
+						road[icr, jec] = 1;
+						road[jec, icr] = 1;
+					}
+
+					//формирование матрицы ифраструктура
+					if (el1.Infr > el2.Infr)
+					{
+						infr[icr, jec] = el1.Infr - el2.Infr;
+						infr[jec, icr] = 1 / (Convert.ToDouble(el1.Infr) - Convert.ToDouble(el2.Infr));
+					}
+					else if (el1.Infr < el2.Infr)
+					{
+						infr[icr, jec] = 1 / (Convert.ToDouble(el2.Infr) - Convert.ToDouble(el1.Infr));
+						infr[jec, icr] = el2.Infr - el1.Infr;
+					}
+					else
+					{
+						infr[icr, jec] = 1;
+						infr[jec, icr] = 1;
+					}
+
+					//формирование матрицы цена участка
+					if (el1.Cost > el2.Cost)
+					{
+						cost[icr, jec] = el1.Cost - el2.Cost;
+						cost[jec, icr] = 1 / (Convert.ToDouble(el1.Cost) - Convert.ToDouble(el2.Cost));
+					}
+					else if (el1.Cost < el2.Cost)
+					{
+						cost[icr, jec] = 1 / (Convert.ToDouble(el2.Cost) - Convert.ToDouble(el1.Cost));
+						cost[jec, icr] = el2.Cost - el1.Cost;
+					}
+					else
+					{
+						cost[icr, jec] = 1;
+						cost[jec, icr] = 1;
+					}
+
+					jec++;
+				}
+				icr++;
+			}
+
+			 
+
 			weightCloseTown = Weight(closeTown);
 			weightEcology = Weight(ecology);
 			weightRoad = Weight(road);
 			weightInfr = Weight(infr);
 			weightCost = Weight(cost);
 
-			double[,] weightMatrix = new double[5, 5];
+			double[,] weightMatrix = new double[len, 5];
  
-			for (int j = 0; j < 5; j++)
+			for (int j = 0; j < len; j++)
 			{
-				weightMatrix[0, j] = weightCloseTown[j];
-				weightMatrix[1, j] = weightEcology[j];
-				weightMatrix[2, j] = weightRoad[j];
-				weightMatrix[3, j] = weightInfr[j];
-				weightMatrix[4, j] = weightCost[j];
+				weightMatrix[j, 0] = weightCloseTown[j];
+				weightMatrix[j, 1] = weightEcology[j];
+				weightMatrix[j, 2] = weightRoad[j];
+				weightMatrix[j, 3] = weightInfr[j];
+				weightMatrix[j, 4] = weightCost[j];
 			}
 
 			result = Multy(weight, weightMatrix);
 
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < len; i++)
 			{
 				textBox3.Text += result[i].ToString("0.000");
 				textBox3.Text += Environment.NewLine;
 				textBox3.Text += Environment.NewLine;
 			}
+			/*
 			chart1.Series.Clear();
 			chart1.Series.Add(new Series("ColumnSeries")
 			{
@@ -165,6 +245,7 @@ namespace AHP
 			string[] alter = { "Тургенево", "Карачарово", "Панфилово", "Ковардицы", "Чаадаево" };
 			chart1.Series["ColumnSeries"].Points.DataBindXY(alter, result);
 			chart2.Series["ColumnSeries2"].Points.DataBindXY(alter, result);
+			*/
 		}
 
 		public void MatrixA(double[,] matrix)
@@ -205,6 +286,44 @@ namespace AHP
 
 		public double[] Weight(double[,] matrix)
 		{
+			int size = matrix.GetLength(0);
+			double[] sum = new double[size];
+			double asum;
+			double[,] matrixA = new double[size, size];
+			double[] weight = new double[size];
+			for (int j = 0; j < size; j++)
+			{
+				sum[j] = 0;
+				for (int i = 0; i < size; i++)
+				{
+					sum[j] += matrix[i, j];
+				}
+			}
+
+			for (int j = 0; j < size; j++)
+			{
+				for (int i = 0; i < size; i++)
+				{
+					matrixA[i, j] = matrix[i, j] / sum[j];
+				}
+			}
+
+			for (int i = 0; i < size; i++)
+			{
+				asum = 0.0;
+				for (int j = 0; j < size; j++)
+				{
+					asum = asum + matrixA[i, j];
+				}
+				weight[i] = asum / size;
+			}
+
+			return weight;
+		}
+
+		/*
+		public double[] WeightForA(double[,] matrix)
+		{
 			double[] sum = new double[5];
 			double asum;
 			double[,] matrixA = new double[5,5];
@@ -238,14 +357,16 @@ namespace AHP
 			
 			return weight;
 		}
+		*/
 
 		public double[] Multy(double[] vector, double[,] matrix)
 		{
-			double[] multyVector = new double[5];
-			for (int i = 0; i < 5; i++)
+			//int size = matrix.GetLength(1);
+			double[] multyVector = new double[matrix.GetLength(0)];
+			for (int i = 0; i < matrix.GetLength(0); i++)
 			{
-				multyVector[i] = 0;
-				for (int j = 0; j < 5; j++)
+				multyVector[i] = 0;	
+				for (int j = 0; j < matrix.GetLength(1); j++)
 				{
 					multyVector[i] += matrix[i, j] * vector[j];
 				}
@@ -390,6 +511,15 @@ namespace AHP
 			{
 				return;
 			}
+		}
+
+		private void textBox1_TextChanged(object sender, EventArgs e)
+		{
+			trackBar5.Value = 0;
+			trackBar6.Value = 0;
+			trackBar7.Value = 0;
+			trackBar8.Value = 0;
+			trackBar9.Value = 0;
 		}
 	}
 }
