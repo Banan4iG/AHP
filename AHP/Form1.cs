@@ -225,27 +225,29 @@ namespace AHP
 
 			result = Multy(weight, weightMatrix);
 
+			/*
 			for (int i = 0; i < len; i++)
 			{
 				textBox3.Text += result[i].ToString("0.000");
 				textBox3.Text += Environment.NewLine;
 				textBox3.Text += Environment.NewLine;
 			}
-			/*
-			chart1.Series.Clear();
-			chart1.Series.Add(new Series("ColumnSeries")
-			{
-				ChartType = SeriesChartType.Doughnut
-			});
+			*/
 			chart2.Series.Clear();
-			chart2.Series.Add(new Series("ColumnSeries2")
+			chart2.Series.Add(new Series("Название")
 			{
 				ChartType = SeriesChartType.Column
 			});
-			string[] alter = { "Тургенево", "Карачарово", "Панфилово", "Ковардицы", "Чаадаево" };
-			chart1.Series["ColumnSeries"].Points.DataBindXY(alter, result);
-			chart2.Series["ColumnSeries2"].Points.DataBindXY(alter, result);
-			*/
+
+			string[] alter = new string[len];
+
+			for(int i = 0; i < len; i++)
+			{
+				alter[i] = ListAlternative[i].Name;
+			}
+
+			chart2.Series["Название"].Points.DataBindXY(alter, result);
+			
 		}
 
 		public void MatrixA(double[,] matrix)
@@ -520,6 +522,11 @@ namespace AHP
 			trackBar7.Value = 0;
 			trackBar8.Value = 0;
 			trackBar9.Value = 0;
+		}
+
+		private void label16_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

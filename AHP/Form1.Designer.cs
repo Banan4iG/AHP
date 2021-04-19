@@ -28,12 +28,9 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.button1 = new System.Windows.Forms.Button();
 			this.trackBar0 = new System.Windows.Forms.TrackBar();
 			this.trackBar1 = new System.Windows.Forms.TrackBar();
@@ -45,8 +42,6 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -77,7 +72,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -91,7 +85,7 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(29, 419);
+			this.button1.Location = new System.Drawing.Point(199, 431);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(78, 23);
 			this.button1.TabIndex = 0;
@@ -209,44 +203,21 @@
 			this.label5.TabIndex = 2;
 			this.label5.Text = "Цена\r\nучастка";
 			// 
-			// textBox3
-			// 
-			this.textBox3.Location = new System.Drawing.Point(29, 201);
-			this.textBox3.Multiline = true;
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(107, 210);
-			this.textBox3.TabIndex = 3;
-			// 
-			// chart1
-			// 
-			chartArea7.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea7);
-			legend7.Name = "Legend1";
-			this.chart1.Legends.Add(legend7);
-			this.chart1.Location = new System.Drawing.Point(223, 201);
-			this.chart1.Name = "chart1";
-			series7.ChartArea = "ChartArea1";
-			series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-			series7.Legend = "Legend1";
-			series7.Name = "Series1";
-			this.chart1.Series.Add(series7);
-			this.chart1.Size = new System.Drawing.Size(227, 232);
-			this.chart1.TabIndex = 4;
-			this.chart1.Text = "chart1";
-			// 
 			// chart2
 			// 
-			chartArea8.Name = "ChartArea1";
-			this.chart2.ChartAreas.Add(chartArea8);
-			legend8.Name = "Legend1";
-			this.chart2.Legends.Add(legend8);
-			this.chart2.Location = new System.Drawing.Point(529, 177);
+			chartArea3.Name = "ChartArea1";
+			this.chart2.ChartAreas.Add(chartArea3);
+			legend3.Enabled = false;
+			legend3.Name = "Legend1";
+			this.chart2.Legends.Add(legend3);
+			this.chart2.Location = new System.Drawing.Point(6, 175);
 			this.chart2.Name = "chart2";
-			series8.ChartArea = "ChartArea1";
-			series8.Legend = "Legend1";
-			series8.Name = "Series1";
-			this.chart2.Series.Add(series8);
-			this.chart2.Size = new System.Drawing.Size(247, 234);
+			series3.ChartArea = "ChartArea1";
+			series3.IsVisibleInLegend = false;
+			series3.Legend = "Legend1";
+			series3.Name = "Series1";
+			this.chart2.Series.Add(series3);
+			this.chart2.Size = new System.Drawing.Size(447, 249);
 			this.chart2.TabIndex = 4;
 			this.chart2.Text = "chart1";
 			// 
@@ -257,7 +228,7 @@
 			this.tabControl1.Location = new System.Drawing.Point(2, 2);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(861, 486);
+			this.tabControl1.Size = new System.Drawing.Size(486, 486);
 			this.tabControl1.TabIndex = 5;
 			// 
 			// tabPage1
@@ -265,10 +236,8 @@
 			this.tabPage1.Controls.Add(this.trackBar0);
 			this.tabPage1.Controls.Add(this.chart2);
 			this.tabPage1.Controls.Add(this.trackBar1);
-			this.tabPage1.Controls.Add(this.chart1);
 			this.tabPage1.Controls.Add(this.trackBar2);
 			this.tabPage1.Controls.Add(this.button1);
-			this.tabPage1.Controls.Add(this.textBox3);
 			this.tabPage1.Controls.Add(this.trackBar3);
 			this.tabPage1.Controls.Add(this.label10);
 			this.tabPage1.Controls.Add(this.label5);
@@ -284,7 +253,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(853, 460);
+			this.tabPage1.Size = new System.Drawing.Size(478, 460);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Основные расчеты";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -354,7 +323,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(853, 460);
+			this.tabPage2.Size = new System.Drawing.Size(478, 460);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Изменение альтернатив";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -363,15 +332,16 @@
 			// 
 			this.label16.AutoSize = true;
 			this.label16.ForeColor = System.Drawing.Color.Red;
-			this.label16.Location = new System.Drawing.Point(489, 74);
+			this.label16.Location = new System.Drawing.Point(329, 69);
 			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(231, 13);
+			this.label16.Size = new System.Drawing.Size(128, 26);
 			this.label16.TabIndex = 14;
-			this.label16.Text = "Необходимо настроить значения критериев";
+			this.label16.Text = "Необходимо настроить \r\nзначения критериев";
+			this.label16.Click += new System.EventHandler(this.label16_Click);
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(489, 350);
+			this.button3.Location = new System.Drawing.Point(358, 224);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(75, 23);
 			this.button3.TabIndex = 13;
@@ -486,15 +456,15 @@
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(489, 32);
+			this.textBox1.Location = new System.Drawing.Point(332, 32);
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(198, 20);
+			this.textBox1.Size = new System.Drawing.Size(125, 20);
 			this.textBox1.TabIndex = 2;
 			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(489, 100);
+			this.button2.Location = new System.Drawing.Point(358, 142);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 23);
 			this.button2.TabIndex = 1;
@@ -515,7 +485,7 @@
 			this.listView1.HideSelection = false;
 			this.listView1.Location = new System.Drawing.Point(22, 32);
 			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(437, 215);
+			this.listView1.Size = new System.Drawing.Size(301, 215);
 			this.listView1.TabIndex = 0;
 			this.listView1.UseCompatibleStateImageBehavior = false;
 			this.listView1.View = System.Windows.Forms.View.Details;
@@ -524,23 +494,22 @@
 			// columnHeader1
 			// 
 			this.columnHeader1.Text = "Альтернатива";
-			this.columnHeader1.Width = 430;
+			this.columnHeader1.Width = 149;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(865, 489);
+			this.ClientSize = new System.Drawing.Size(487, 489);
 			this.Controls.Add(this.tabControl1);
 			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Text = "Выбор места строительства дачи";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			((System.ComponentModel.ISupportInitialize)(this.trackBar0)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
@@ -569,8 +538,6 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox textBox3;
-		private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
 		private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
